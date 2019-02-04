@@ -1,6 +1,7 @@
 package com.example.katerynastorozh.themoviechooser.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,8 +12,9 @@ import android.widget.TextView;
 
 import com.example.katerynastorozh.themoviechooser.R;
 import com.example.katerynastorozh.themoviechooser.model.Movie;
-import com.squareup.picasso.Picasso;
 
+import com.squareup.picasso.Picasso;
+import com.example.katerynastorozh.themoviechooser.view.*;
 import java.util.ArrayList;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
@@ -42,6 +44,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         Picasso.get().load(imagePath).into(movieViewHolder.moviePic);
 
 
+
     }
 
     @Override
@@ -59,6 +62,26 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             moviePic = itemView.findViewById(R.id.ivPic);
             movieTitle = itemView.findViewById(R.id.tvTitle);
             movieRait = itemView.findViewById(R.id.tvRaiting);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
+                    int pos = getAdapterPosition();
+                    if (pos!=RecyclerView.NO_POSITION)
+                    {
+                        Movie selectedMovie = movies.get(pos);
+                        Intent intent = new Intent(context, MovieActivity.class);
+                        intent.putExtra("movie", selectedMovie);
+                        context.startActivity(intent);
+
+
+                    }
+
+
+                }
+            });
         }
     }
 

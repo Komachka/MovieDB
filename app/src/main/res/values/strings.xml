@@ -2,4 +2,5 @@
     <string name="app_name">TheMovieChooser</string>
     <string name="action_settings">Settings</string>
     <string name="api_key">24f24e986d6b41e9d71abadf8c02be7b</string>
+    <string name="title_activity_movie">MovieActivity</string>
 </resources>
